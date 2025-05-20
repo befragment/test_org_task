@@ -1,7 +1,11 @@
+import os 
+
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 
-DATABASE_URL = "postgresql+asyncpg://admin:a1b2c3d4e5@postgresql:5432/directorydb"
+from config import settings
+
+DATABASE_URL = os.getenv(settings.database_url, "postgresql+asyncpg://admin:a1b2c3d4e5@postgresql:5432/directorydb")
 
 Base = declarative_base()
 
