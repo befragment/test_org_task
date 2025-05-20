@@ -5,11 +5,9 @@ from sqlalchemy.orm import declarative_base
 
 from config import settings
 
-DATABASE_URL = os.getenv(settings.database_url, "postgresql+asyncpg://admin:a1b2c3d4e5@postgresql:5432/directorydb")
-
 Base = declarative_base()
 
-engine = create_async_engine(DATABASE_URL, echo=True)
+engine = create_async_engine(settings.database_url, echo=True)
 
 async_session_maker = async_sessionmaker(
     bind=engine,
