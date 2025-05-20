@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.DS_Store
+.python-version
+
+.idea
+.vscode
+.pass
+
+.venv/
+.env
+
+pkg/assets/media/
+
+docker-compose.debug.yml

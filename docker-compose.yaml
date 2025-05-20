@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  postgresql:
+    image: postgres:15
+    command: [ "postgres" ]
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 9431:5432
+
+  backend:
+    env_file: .env
+    build: ./
+    entrypoint: tail -f /dev/null
+    volumes:
+      - ./src:/opt/
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgresql
+
+volumes:
+  pg_data:
+    driver: local
